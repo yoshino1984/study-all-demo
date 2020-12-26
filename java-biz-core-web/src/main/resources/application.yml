@@ -1,0 +1,7 @@
+
+##Tomcat 的参数，把工作线程池最大线程数设置为 1，这样始终是同一个线程在处理请求
+#server.tomcat.max-threads=1
+
+spring:
+  profiles:
+    active: @activedProperties@
