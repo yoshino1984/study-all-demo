@@ -23,6 +23,6 @@ public class OrderProtocolEncoder extends MessageToMessageEncoder<ResponseMessag
 
         responseMessage.encode(buffer);
 
-        list.add(responseMessage);
+        list.add(buffer);
     }
 }

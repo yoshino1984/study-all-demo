@@ -16,10 +16,10 @@ import java.util.List;
 public class OrderProtocolDecoder extends MessageToMessageDecoder<ByteBuf> {
 
     @Override
-    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
+    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> out) throws Exception {
         RequestMessage requestMessage = new RequestMessage();
         requestMessage.decode(byteBuf);
 
-        list.add(requestMessage);
+        out.add(requestMessage);
     }
 }

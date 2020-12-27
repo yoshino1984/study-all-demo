@@ -5,6 +5,8 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioChannelOption;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.example.study.client.codec.OrderFrameDecoder;
 import io.netty.example.study.client.codec.OrderFrameEncoder;
@@ -19,6 +21,7 @@ import io.netty.example.study.common.order.OrderOperation;
 import io.netty.example.study.util.IdUtil;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.ExecutionException;
 
@@ -27,10 +30,13 @@ import java.util.concurrent.ExecutionException;
  * 2020/12/26 14:13
  * @since
  **/
+@Slf4j
 public class NettyClientV2 {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         Bootstrap bootstrap = new Bootstrap();
-        bootstrap.channel(NioSocketChannel.class);
+        bootstrap.channel(NioSocketChannel.class)
+            // 客户端*(尝试)连接*服务器最大允许时间
+            .option(NioChannelOption.CONNECT_TIMEOUT_MILLIS, 10 * 1000);
 
         NioEventLoopGroup group = new NioEventLoopGroup();
 
@@ -43,13 +49,16 @@ public class NettyClientV2 {
                 @Override
                 protected void initChannel(NioSocketChannel ch) throws Exception {
                     ChannelPipeline pipeline = ch.pipeline();
+
+                    pipeline.addLast(new LoggingHandler(LogLevel.DEBUG));
+
                     pipeline.addLast("frameDecoder", new OrderFrameDecoder());
                     pipeline.addLast("frameEncoder", new OrderFrameEncoder());
 
                     pipeline.addLast("protocolDecoder", new OrderProtocolDecoder());
                     pipeline.addLast("protocolEncoder", new OrderProtocolEncoder());
 
-                    pipeline.addLast(responseDispatcherHandler);
+                    pipeline.addLast("", responseDispatcherHandler);
 
                     pipeline.addLast(new LoggingHandler(LogLevel.INFO));
                 }
@@ -66,7 +75,7 @@ public class NettyClientV2 {
             channelFuture.channel().writeAndFlush(requestMessage);
 
             OperationResult operationResult = operationResultFuture.get();
-            System.out.println(operationResult);
+            log.info(String.valueOf(operationResult));
 
             channelFuture.channel().closeFuture().sync();
 

@@ -6,6 +6,7 @@ import io.netty.example.study.common.Operation;
 import io.netty.example.study.common.OperationResult;
 import io.netty.example.study.common.RequestMessage;
 import io.netty.example.study.common.ResponseMessage;
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -13,6 +14,7 @@ import io.netty.example.study.common.ResponseMessage;
  * 2020/12/26 13:50
  * @since
  **/
+@Slf4j
 public class OrderServerProcessHandler extends SimpleChannelInboundHandler<RequestMessage> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, RequestMessage requestMessage) throws Exception {
@@ -23,10 +25,10 @@ public class OrderServerProcessHandler extends SimpleChannelInboundHandler<Reque
         responsemessage.setMessageHeader(requestMessage.getMessageHeader());
         responsemessage.setMessageBody(operationResult);
 
-        ctx.writeAndFlush(responsemessage);
-//        if (ctx.channel().isActive() && ctx.channel().isWritable()) {
-//        } else {
-//            System.out.println("not writable now, message dropped");
-//        }
+        if (ctx.channel().isActive() && ctx.channel().isWritable()) {
+            ctx.writeAndFlush(responsemessage);
+        } else {
+            log.error("not writable now, message dropped");
+        }
     }
 }
