@@ -11,6 +11,8 @@
         <option value="$PROJECT_DIR$/java-biz-core-web/pom.xml" />
         <option value="$PROJECT_DIR$/im-demo/pom.xml" />
         <option value="$PROJECT_DIR$/netty-research/pom.xml" />
+        <option value="$PROJECT_DIR$/apollo-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/cache-demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

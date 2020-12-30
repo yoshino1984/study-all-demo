@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="java-biz-core-web" />
+        <module name="netty-research" />
+        <module name="apollo-demo" />
         <module name="java-biz-core" />
         <module name="java-core" />
         <module name="data-structures-and-algorithms" />
-        <module name="netty-research" />
+        <module name="cache-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

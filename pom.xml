@@ -16,7 +16,7 @@
 
     <properties>
         <spring.version>5.2.2.RELEASE</spring.version>
-        <fast.version>1.2.62</fast.version>
+        <fast.version>1.2.72</fast.version>
     </properties>
 
     <!-- Spring 依赖管理 -->
