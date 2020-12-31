@@ -18,6 +18,7 @@ spring:
       pool:
         max-active: 16
         max-wait: 10ms
+    port: 6380
 
 #    type: ehcache
 #    ehcache:
