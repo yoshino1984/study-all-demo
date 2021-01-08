@@ -21,5 +21,6 @@ public class ApolloDemoApplication implements CommandLineRunner {
         System.out.println(apolloConfigBean.getServiceType());
         System.out.println(apolloConfigBean.getStyleType());
         System.out.println(apolloConfigBean.getOrderType());
+        System.out.println(apolloConfigBean.getAppCodeDingBizAccessTokenMap());
     }
 }

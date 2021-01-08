@@ -4,6 +4,7 @@ import com.ctrip.framework.apollo.ConfigService;
 import com.ctrip.framework.apollo.spring.annotation.ApolloJsonValue;
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Map;
  * 2020/12/30 09:23
  * @since
  **/
-@Data
+@Getter
 @Service
 @EnableApolloConfig
 public class ApolloConfigBean {
@@ -28,6 +29,8 @@ public class ApolloConfigBean {
     @ApolloJsonValue(value = "${mpAppPkgOrderType:{}}")
     private Map<Integer, String> orderType;
 
+    @ApolloJsonValue(value = "${appDingBizAccessTokens:{}}")
+    private Map<String, String> appCodeDingBizAccessTokenMap;
 
     static {
         ConfigService.getAppConfig().addChangeListener(System.out::println);
