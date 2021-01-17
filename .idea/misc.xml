@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/netty-research/pom.xml" />
         <option value="$PROJECT_DIR$/apollo-demo/pom.xml" />
         <option value="$PROJECT_DIR$/cache-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/web-flux-demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

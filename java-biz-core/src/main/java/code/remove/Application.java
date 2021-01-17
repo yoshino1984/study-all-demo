@@ -2,7 +2,6 @@ package code.remove;
 
 import com.alibaba.fastjson.JSON;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -46,11 +45,11 @@ public class Application {
         return (T)JSON.parseObject("{}", c);
     }
     public static void main(String[] args) {
-        Request request = new Request();
-        request.setAction("action");
-        request.setCode("code");
-        Response response = remoteCall(request);
-        System.out.println(JSON.toJSONString(response));
+//        Request request = new Request();
+//        request.setAction("action");
+//        request.setCode("code");
+//        Response response = remoteCall(request);
+//        System.out.println(JSON.toJSONString(response));
 
     }
 }

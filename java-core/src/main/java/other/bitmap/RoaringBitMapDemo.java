@@ -26,7 +26,7 @@ public class RoaringBitMapDemo {
         Assert.assertEquals(rror, rr);
         // number of values stored?
         long cardinality = rr.getLongCardinality();
-        System.out.println(cardinality);
+        System.out.println("cardinality=" + cardinality);
         rr.forEach((IntConsumer) System.out::println);
     }
 }

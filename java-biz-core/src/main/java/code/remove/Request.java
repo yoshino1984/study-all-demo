@@ -1,12 +1,14 @@
 package code.remove;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author wangxin
  * 2020/5/2 14:27
  * @since
  **/
+@EqualsAndHashCode(callSuper = true)
 @API(url = "url/string")
 @Data
 public class Request extends BaseRequest<Response>{

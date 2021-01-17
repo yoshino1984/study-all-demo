@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="java-biz-core-web" />
+        <module name="web-flux-demo" />
         <module name="netty-research" />
         <module name="apollo-demo" />
         <module name="java-biz-core" />
