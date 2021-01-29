@@ -1,10 +1,6 @@
 package com.yoshino.freemarker.model;
 
 
-/**
- * @author luoxingdong
- * @date 2019-11-30 15:21
- */
 public class InvDet {
     public Integer idx, i;
     /**
@@ -174,15 +170,6 @@ public class InvDet {
 
     public InvDet() {
     }
-
-    //public InvDet(String code, String name, String color, String size, Double price, String num, Integer idx) {
-    //    this.code = code;
-    //    this.name = name;
-    //    this.color = color;
-    //    this.size = size;
-    //    this.price = price;
-    //    this.num = num;
-    //}
 
     public String getDressclass() {
         return dressclass;

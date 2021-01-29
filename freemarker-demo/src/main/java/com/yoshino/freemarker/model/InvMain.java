@@ -1,13 +1,8 @@
 package com.yoshino.freemarker.model;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author luoxingdong
- * @date 2019-11-30 15:23
- */
 public class InvMain {
     /**
      * 批次号
