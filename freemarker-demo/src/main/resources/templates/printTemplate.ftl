@@ -100,24 +100,22 @@
                 class="title"
                 style="font-size: 28px; margin-bottom: 15px; text-align: center; width: 100%"
             >
-                ${title}
+                ${template.title}
             </div>
 
-
             <!-- 头部 -->
-            <div class="headers">
-                <div class="header-line">
-                    <div>批次:501</div>
-                    <div>日期:2020-01-28</div>
-                </div>
-                <div class="header-line">
-                    <div>客户:张三</div>
-                    <div>店员:李四</div>
-                </div>
+            <div class="header">
+                <#if template.header??>
+                    ${divNLineNItemFormat(template.header, data, "header-line")}
+                </#if>
             </div>
 
             <!-- 表格 -->
-            <div class="table lineType0" style="margin-top: 15px">
+
+            <#if template.dets??>
+                ${invDetTableFormat(template.dets, data.khjgDets)}
+            </#if>
+            <div class="table lineType1" style="margin-top: 15px">
                 <!-- 表格头部 -->
                 <div class="table-head">
                     <div style="width: 15mm">款号</div>
@@ -144,14 +142,9 @@
 
             <!-- 底部 -->
             <div class="footer" style="margin-top: 15px">
-                <div class="footer-line">
-                    <div>经办人:王五</div>
-                    <div>电话:87654321</div>
-                </div>
-                <div class="footer-line">
-                    <div>手机:12345678901</div>
-                    <div>提醒:离店概不退换</div>
-                </div>
+                <#if template.footer??>
+                    ${divNLineNItemFormat(template.footer, data, "footer-line")}
+                </#if>
             </div>
         </div>
     </body>
