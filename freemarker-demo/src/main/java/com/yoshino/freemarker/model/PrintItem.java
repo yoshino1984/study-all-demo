@@ -19,7 +19,7 @@ public class PrintItem {
     /** 绝对宽度 单位：mm*/
     private String width;
     /** 字体大小*/
-    private int fontSize;
+    private Integer fontSize;
     /** 是否加粗 */
     private String fontWeight;
     /** 字段类型*/

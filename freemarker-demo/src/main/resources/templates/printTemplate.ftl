@@ -113,32 +113,8 @@
             <!-- 表格 -->
 
             <#if template.dets??>
-                ${invDetTableFormat(template.dets, data.khjgDets)}
+                ${invDetTableFormat(template.dets, data.dets)}
             </#if>
-            <div class="table lineType1" style="margin-top: 15px">
-                <!-- 表格头部 -->
-                <div class="table-head">
-                    <div style="width: 15mm">款号</div>
-                    <div style="width: 8mm">颜色</div>
-                    <div style="width: 8mm">尺码</div>
-                    <div style="width: 8mm">数量</div>
-                </div>
-                <!-- 表格主体 -->
-                <div class="table-body">
-                    <div class="table-body-line">
-                        <div style="width: 15mm">0222,卫衣</div>
-                        <div style="width: 8mm">黑色</div>
-                        <div style="width: 8mm">s</div>
-                        <div style="width: 8mm">5</div>
-                    </div>
-                    <div class="table-body-line">
-                        <div style="width: 15mm">0222,羽绒马甲</div>
-                        <div style="width: 8mm">黑色</div>
-                        <div style="width: 8mm">L</div>
-                        <div style="width: 8mm">5</div>
-                    </div>
-                </div>
-            </div>
 
             <!-- 底部 -->
             <div class="footer" style="margin-top: 15px">

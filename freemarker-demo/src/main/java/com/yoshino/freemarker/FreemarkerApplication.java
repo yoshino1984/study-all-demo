@@ -1,20 +1,19 @@
 package com.yoshino.freemarker;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.yoshino.freemarker.method.DivNLineNItemFormatMethodModelEx;
 import com.yoshino.freemarker.method.IndexOfMethod;
 import com.yoshino.freemarker.method.InvDetTableFormatMethodModelEx;
-import com.yoshino.freemarker.model.InvDet;
-import com.yoshino.freemarker.model.InvMain;
-import com.yoshino.freemarker.model.PrintTemplateData;
-import com.yoshino.freemarker.model.User;
+import com.yoshino.freemarker.model.*;
 import com.yoshino.freemarker.service.FreemarkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @SpringBootApplication
@@ -39,32 +38,35 @@ public class FreemarkerApplication implements CommandLineRunner {
         PrintTemplateData templateData = JSON.parseObject(printTemplate, PrintTemplateData.class);
         Map<String, Object> dataMap = new HashMap<>();
         dataMap.put("template", templateData);
-        dataMap.put("data", JSON.toJSON(buildData()));
+        dataMap.put("data", buildData());
         dataMap.put("divNLineNItemFormat", new DivNLineNItemFormatMethodModelEx());
         dataMap.put("invDetTableFormat", new InvDetTableFormatMethodModelEx());
         return freemarkerService.fillTemplate("printTemplate.ftl", dataMap);
     }
 
-    private InvMain buildData() {
-        InvMain result = new InvMain();
-        result.setId("501");
-        result.setOptime("2020-01-28");
-        result.setClientname("张三");
-        result.setSellername("李四");
-        result.setDwphone("87654321");
-        result.setDwmobile("12345678901");
+    private JSON buildData() {
+        Main invMain = new Main();
+        invMain.setMainId("501");
+        invMain.setOpTime(new Date());
+        invMain.setCompName("张三");
+        invMain.setOpName("李四");
+        invMain.setOwnerName("王五");
+        invMain.setShopPhone("87654321");
+        invMain.setShopMobile("12345678901");
+        JSONObject result = (JSONObject) JSON.toJSON(invMain);
 
-        InvDet invDet1 = new InvDet();
+
+        MainDet invDet1 = new MainDet();
         invDet1.setCode("0222,卫衣");
         invDet1.setColor("黑色");
         invDet1.setSize("s");
-        invDet1.setNum("5");
-        InvDet invDet2 = new InvDet();
+        invDet1.setNum(BigDecimal.valueOf(5));
+        MainDet invDet2 = new MainDet();
         invDet2.setCode("0222,羽绒马甲");
         invDet2.setColor("黑色");
         invDet2.setSize("L");
-        invDet2.setNum("5");
-        result.setKhjgDets(Lists.newArrayList(invDet1, invDet2));
+        invDet2.setNum(BigDecimal.valueOf(5));
+        result.put("dets", JSON.toJSON(Lists.newArrayList(invDet1, invDet2)));
         return result;
     }
 
