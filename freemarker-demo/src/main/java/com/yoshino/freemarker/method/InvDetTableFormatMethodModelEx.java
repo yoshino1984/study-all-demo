@@ -39,7 +39,7 @@ public class InvDetTableFormatMethodModelEx implements TemplateMethodModelEx {
     private String getTableDivWithClass(Table table) {
         return "<div class=\"table lineType" + table.getConfig().getLineType()
             + " borderType" + table.getConfig().getBorderType()
-            + "\" style=\"margin-top: 15px\">";
+            + "\" style=\"margin-top: 5mm\">";
     }
 
     private StringBuilder buildTableHead(List<PrintItem> head) throws TemplateModelException {
